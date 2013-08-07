@@ -20,7 +20,8 @@ public:
     explicit TronWidget(QWidget *parent = 0);
     ~TronWidget();
 
-    auto getPlayerColor(int) -> const QColor&;
+    auto getPlayerName(int) const -> QString;
+    auto getPlayerColor(int) const -> QColor;
     
 protected:
     void resizeEvent(QResizeEvent *);
@@ -33,6 +34,7 @@ private:
     int tileSize{DEFAULT_TILE_SIZE};
     QSize mapSize{Tron::MIN_MAP_WIDTH, Tron::MIN_MAP_HEIGHT};
     int playerCount{Tron::MIN_PLAYER_COUNT};
+    std::vector<QString> playerNames{"Player One", "Player Two", "Player Three", "Player Four"};
     std::vector<QColor> playerColors{Qt::red, Qt::green, Qt::blue, Qt::yellow};
     //! Keybindings of Qt::Key -> (playerIndex, direction)
     static std::map<int, std::pair<int, Player::Direction>> keybindings;
@@ -52,6 +54,8 @@ public slots:
 
     //! Set player count for next game.
     void setPlayerCount(int);
+    //! Set name to be used to display player.
+    void setPlayerName(int, QString);
     //! Set color to be used to display player.
     void setPlayerColor(int, QColor);
     //! Set width of map in tiles.

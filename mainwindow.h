@@ -28,6 +28,11 @@ private slots:
     void on_colorButton_3_clicked();
     void on_colorButton_4_clicked();
 
+    void on_nameEdit_1_textEdited(const QString &arg1);
+    void on_nameEdit_2_textEdited(const QString &arg1);
+    void on_nameEdit_3_textEdited(const QString &arg1);
+    void on_nameEdit_4_textEdited(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
 };

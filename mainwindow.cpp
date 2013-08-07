@@ -53,6 +53,10 @@ void MainWindow::tronGameInProgress(bool playing)
     ui->colorButton_2->setEnabled(!playing);
     ui->colorButton_3->setEnabled(!playing);
     ui->colorButton_4->setEnabled(!playing);
+    ui->nameEdit_1->setEnabled(!playing);
+    ui->nameEdit_2->setEnabled(!playing);
+    ui->nameEdit_3->setEnabled(!playing);
+    ui->nameEdit_4->setEnabled(!playing);
     ui->startGameButton->setEnabled(!playing);
     // Update colors on player settings buttons
     // to reflect actual player colors
@@ -93,4 +97,24 @@ void MainWindow::on_colorButton_3_clicked()
 void MainWindow::on_colorButton_4_clicked()
 {
     handleColorButton(3);
+}
+
+void MainWindow::on_nameEdit_1_textEdited(const QString &name)
+{
+    ui->tronWidget->setPlayerName(0, name);
+}
+
+void MainWindow::on_nameEdit_2_textEdited(const QString &name)
+{
+    ui->tronWidget->setPlayerName(1, name);
+}
+
+void MainWindow::on_nameEdit_3_textEdited(const QString &name)
+{
+    ui->tronWidget->setPlayerName(2, name);
+}
+
+void MainWindow::on_nameEdit_4_textEdited(const QString &name)
+{
+    ui->tronWidget->setPlayerName(3, name);
 }

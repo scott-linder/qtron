@@ -25,6 +25,7 @@ public:
 
     explicit Tron(QSize mapSize,
                   int playerCount,
+                  std::vector<QString> playerNames,
                   std::vector<QColor> playerColors);
 
     //! Update all players.

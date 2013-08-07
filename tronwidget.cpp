@@ -22,7 +22,7 @@ TronWidget::~TronWidget()
 
 void TronWidget::start()
 {
-    tron.reset(new Tron(mapSize, playerCount, playerColors));
+    tron.reset(new Tron(mapSize, playerCount, playerNames, playerColors));
     resizeMap();
     setFocus(Qt::OtherFocusReason);
     ticker.start();
@@ -67,12 +67,22 @@ void TronWidget::setPlayerCount(int playerCount)
                               Tron::MAX_PLAYER_COUNT);
 }
 
+void TronWidget::setPlayerName(int player, QString name)
+{
+    this->playerNames[player] = name;
+}
+
+auto TronWidget::getPlayerName(int player) const -> QString
+{
+    return this->playerNames[player];
+}
+
 void TronWidget::setPlayerColor(int player, QColor color)
 {
     this->playerColors[player] = color;
 }
 
-auto TronWidget::getPlayerColor(int player) -> const QColor&
+auto TronWidget::getPlayerColor(int player) const -> QColor
 {
     return this->playerColors[player];
 }

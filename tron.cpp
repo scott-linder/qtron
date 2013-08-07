@@ -5,6 +5,7 @@
 
 Tron::Tron(QSize mapSize,
            int playerCount,
+           std::vector<QString> playerNames,
            std::vector<QColor> playerColors) :
     mapSize(mapSize)
   , playerCount(playerCount)
@@ -20,8 +21,7 @@ Tron::Tron(QSize mapSize,
         throw std::logic_error{"Bad player count."};
     }
     for (int i = 0; i < playerCount; ++i) {
-        QString name = QString("Player %1").arg(i+1);
-        players.emplace_back(name, playerColors[i], startPos(i));
+        players.emplace_back(playerNames[i], playerColors[i], startPos(i));
     }
 }
 
