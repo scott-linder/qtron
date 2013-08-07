@@ -15,9 +15,14 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    
-private slots:
 
+private:
+    void handleColorButton(int);
+
+public slots:
+    void tronGameInProgress(bool);
+
+private slots:
     void on_colorButton_1_clicked();
     void on_colorButton_2_clicked();
     void on_colorButton_3_clicked();

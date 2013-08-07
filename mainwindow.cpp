@@ -34,6 +34,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->startGameButton, SIGNAL(clicked()),
             ui->tronWidget, SLOT(start()));
+
+    connect(ui->tronWidget, SIGNAL(gameInProgress(bool)),
+            this, SLOT(tronGameInProgress(bool)));
 }
 
 MainWindow::~MainWindow()
@@ -41,24 +44,53 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::tronGameInProgress(bool playing)
+{
+    // Update settings control access
+    ui->playerCountSpinner->setEnabled(!playing);
+    ui->mapSizeSpinner->setEnabled(!playing);
+    ui->colorButton_1->setEnabled(!playing);
+    ui->colorButton_2->setEnabled(!playing);
+    ui->colorButton_3->setEnabled(!playing);
+    ui->colorButton_4->setEnabled(!playing);
+    ui->startGameButton->setEnabled(!playing);
+    // Update colors on player settings buttons
+    // to reflect actual player colors
+    if (playing) {
+        QString colorFmt{"color: %1"};
+        ui->colorButton_1->setStyleSheet(colorFmt.arg(ui->tronWidget->getPlayerColor(0).name()));
+        ui->colorButton_2->setStyleSheet(colorFmt.arg(ui->tronWidget->getPlayerColor(1).name()));
+        ui->colorButton_3->setStyleSheet(colorFmt.arg(ui->tronWidget->getPlayerColor(2).name()));
+        ui->colorButton_4->setStyleSheet(colorFmt.arg(ui->tronWidget->getPlayerColor(3).name()));
+    } else {
+        // Make it easy to start a new game right away
+        ui->startGameButton->setFocus(Qt::OtherFocusReason);
+    }
+}
+
+void MainWindow::handleColorButton(int i)
+{
+    ui->tronWidget->setPlayerColor(i, QColorDialog::getColor(ui->tronWidget->getPlayerColor(i), this));
+}
+
 /* Kill me: */
 
 void MainWindow::on_colorButton_1_clicked()
 {
-    ui->tronWidget->setPlayerColor(0, QColorDialog::getColor(ui->tronWidget->getPlayerColor(0), this));
+    handleColorButton(0);
 }
 
 void MainWindow::on_colorButton_2_clicked()
 {
-    ui->tronWidget->setPlayerColor(1, QColorDialog::getColor(ui->tronWidget->getPlayerColor(1), this));
+    handleColorButton(1);
 }
 
 void MainWindow::on_colorButton_3_clicked()
 {
-    ui->tronWidget->setPlayerColor(2, QColorDialog::getColor(ui->tronWidget->getPlayerColor(2), this));
+    handleColorButton(2);
 }
 
 void MainWindow::on_colorButton_4_clicked()
 {
-    ui->tronWidget->setPlayerColor(3, QColorDialog::getColor(ui->tronWidget->getPlayerColor(3), this));
+    handleColorButton(3);
 }
