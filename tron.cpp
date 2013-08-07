@@ -19,13 +19,9 @@ Tron::Tron(QSize mapSize,
             || playerCount > MAX_PLAYER_COUNT) {
         throw std::logic_error{"Bad player count."};
     }
-    int x, y;
     for (int i = 0; i < playerCount; ++i) {
         QString name = QString("Player %1").arg(i+1);
-        // TODO: Fix even distribution of players.
-        x = mapSize.width() / (3 * (i+1));
-        y = mapSize.height() / (3 * (i+1));
-        players.emplace_back(name, playerColors[i], QPoint{x, y});
+        players.emplace_back(name, playerColors[i], startPos(i));
     }
 }
 
@@ -88,6 +84,12 @@ auto Tron::getWinner() -> PlayerContainer::iterator
     return iter;
 }
 
+auto Tron::allReady() -> bool
+{
+    return std::all_of(players.begin(), players.end(),
+                       [](const Player &p){return p.getDirection() != Player::Direction::None;});
+}
+
 /*!
  * Determine if `player` is colliding with map geometry
  * or any other players.
@@ -113,10 +115,31 @@ auto Tron::isColliding(const Player &player) -> bool
     return false;
 }
 
-auto Tron::allReady() -> bool
+auto Tron::startPos(int index) -> QPoint
 {
-    return std::all_of(players.begin(), players.end(),
-                       [](const Player &p){return p.getDirection() != Player::Direction::None;});
+    // TODO: This just assumes at most 4 players.
+    int x, y;
+    switch(index) {
+    case 0: // Top Left
+        x = (mapSize.width() / 4);
+        y = (mapSize.height() / 4);
+        break;
+    case 1: // Bottom Right
+        x = 3 * (mapSize.width() / 4);
+        y = 3 * (mapSize.height() / 4);
+        break;
+    case 2: // Top Right
+        x = 3 * (mapSize.width() / 4);
+        y = (mapSize.height() / 4);
+        break;
+    case 3: // Bottom Left
+        x = (mapSize.width() / 4);
+        y = 3 * (mapSize.height() / 4);
+        break;
+    default:
+        throw std::logic_error{"Can't compute start position for player."};
+    }
+    return {x, y};
 }
 
 auto Tron::getMapSize() const -> QSize

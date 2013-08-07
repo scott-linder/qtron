@@ -52,9 +52,11 @@ private:
     PlayerContainer players;
 
     //! Check if all players have a valid (non-none) direction.
-    bool allReady();
+    auto allReady() -> bool;
     //! Check if a player is collding.
-    bool isColliding(const Player &);
+    auto isColliding(const Player &) -> bool;
+    //! Determine proper starting position for player at `index`
+    auto startPos(int) -> QPoint;
 
 };
 
