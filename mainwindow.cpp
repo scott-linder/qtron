@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->playerCountSpinner->setMinimum(Tron::MIN_PLAYER_COUNT);
     ui->playerCountSpinner->setMaximum(Tron::MAX_PLAYER_COUNT);
+    ui->playerCountSpinner->setValue(Tron::MIN_PLAYER_COUNT);
     ui->playerCountSpinner->setSuffix(" Players");
 
     auto min_size = std::max(Tron::MIN_MAP_HEIGHT, Tron::MIN_MAP_WIDTH);
@@ -21,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
     const auto INCREMENTS = 3;
     ui->mapSizeSpinner->setMinimum(min_size);
     ui->mapSizeSpinner->setMaximum(max_size);
+    ui->mapSizeSpinner->setValue(max_size);
     ui->mapSizeSpinner->setSingleStep((max_size - min_size) / INCREMENTS);
     ui->mapSizeSpinner->setSuffix((" Squares"));
 

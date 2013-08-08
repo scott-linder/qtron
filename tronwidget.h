@@ -32,7 +32,7 @@ private:
     QTimer ticker{this};
     std::unique_ptr<Tron> tron{nullptr};
     int tileSize{DEFAULT_TILE_SIZE};
-    QSize mapSize{Tron::MIN_MAP_WIDTH, Tron::MIN_MAP_HEIGHT};
+    QSize mapSize{Tron::MAX_MAP_WIDTH, Tron::MAX_MAP_HEIGHT};
     int playerCount{Tron::MIN_PLAYER_COUNT};
     std::vector<QString> playerNames{"Player One", "Player Two", "Player Three", "Player Four"};
     std::vector<QColor> playerColors{Qt::red, Qt::green, Qt::blue, Qt::yellow};
