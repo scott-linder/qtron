@@ -153,6 +153,12 @@
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="placeholderText">
+             <string>One</string>
+            </property>
            </widget>
           </item>
           <item row="0" column="1">
@@ -162,6 +168,12 @@
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="placeholderText">
+             <string>Two</string>
             </property>
            </widget>
           </item>
@@ -173,6 +185,12 @@
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="placeholderText">
+             <string>Three</string>
+            </property>
            </widget>
           </item>
           <item row="2" column="1">
@@ -182,6 +200,12 @@
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="placeholderText">
+             <string>Four</string>
             </property>
            </widget>
           </item>
@@ -262,9 +286,13 @@
  <tabstops>
   <tabstop>playerCountSpinner</tabstop>
   <tabstop>mapSizeSpinner</tabstop>
+  <tabstop>nameEdit_1</tabstop>
   <tabstop>colorButton_1</tabstop>
+  <tabstop>nameEdit_2</tabstop>
   <tabstop>colorButton_2</tabstop>
+  <tabstop>nameEdit_3</tabstop>
   <tabstop>colorButton_3</tabstop>
+  <tabstop>nameEdit_4</tabstop>
   <tabstop>colorButton_4</tabstop>
   <tabstop>startGameButton</tabstop>
  </tabstops>
