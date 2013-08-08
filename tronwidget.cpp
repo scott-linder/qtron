@@ -195,5 +195,5 @@ TronWidget::keybindings
 };
 
 const int TronWidget::DEFAULT_TILE_SIZE{20};
-const int TronWidget::DEFAULT_TICK_INTERVAL{100};
+const int TronWidget::DEFAULT_TICK_INTERVAL{80};
 
