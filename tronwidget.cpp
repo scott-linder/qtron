@@ -50,7 +50,7 @@ void TronWidget::step()
                 winnerString = "Tie Game";
                 colorString = "black";
             } else {
-                winnerString = QString{"%1 won!"}.arg(winner->getName());
+                winnerString = QString{"%1 wins!"}.arg(winner->getName());
                 colorString = winner->getColor().name();
             }
             QMessageBox gameOverDialog{QMessageBox::Information, "Game Over", winnerString, QMessageBox::Ok, this};
