@@ -48,7 +48,7 @@ void TronWidget::step()
             QString colorString;
             if (winner == tron->getPlayers().end()) {
                 winnerString = "Tie Game";
-                colorString = "black";
+                colorString = "white";
             } else {
                 winnerString = QString{"%1 wins!"}.arg(winner->getName());
                 colorString = winner->getColor().name();
