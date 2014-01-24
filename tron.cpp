@@ -166,8 +166,8 @@ auto Tron::getPlayers() const -> const PlayerContainer&
 const int Tron::MIN_PLAYER_COUNT{2};
 const int Tron::MAX_PLAYER_COUNT{4};
 
-const int Tron::MIN_MAP_WIDTH{20};
-const int Tron::MAX_MAP_WIDTH{50};
+const int Tron::MIN_MAP_WIDTH{10};
+const int Tron::MAX_MAP_WIDTH{100};
 
-const int Tron::MIN_MAP_HEIGHT{20};
-const int Tron::MAX_MAP_HEIGHT{50};
+const int Tron::MIN_MAP_HEIGHT{10};
+const int Tron::MAX_MAP_HEIGHT{100};
