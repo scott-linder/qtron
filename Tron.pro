@@ -27,3 +27,7 @@ HEADERS  += mainwindow.h \
     clamp.h
 
 FORMS    += mainwindow.ui
+
+OTHER_FILES += \
+    README.md \
+    LICENSE.txt
